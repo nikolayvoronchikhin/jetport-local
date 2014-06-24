@@ -1,2 +1,2 @@
-[admin]
+# host is local
 localhost 	ansible_connection=local

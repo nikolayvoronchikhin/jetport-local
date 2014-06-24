@@ -1,6 +1,6 @@
 ---
 # file: site.yml
-- hosts: admin
+- hosts: all
   roles:
     - common
     - jetport
