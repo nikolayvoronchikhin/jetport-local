@@ -1,0 +1,5 @@
+---
+# Handler for uwsgi
+
+- name: restart uwsgi
+  service: name=uwsgi state=restarted

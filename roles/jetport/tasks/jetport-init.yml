@@ -1,0 +1,12 @@
+---
+# Initialize Jetport environment
+
+- name: create/verify jetport deploy directory
+  file: path=/opt/stack state=directory
+  
+- name: create virtualenv
+  shell: virtualenv -p python2.7 /opt/stack creates=/opt/stack/bin/activate
+  
+- name: copy virtualenv wrapper
+  copy: src=pyvenv dest=/opt/stack/bin/pyenv
+  

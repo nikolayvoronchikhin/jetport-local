@@ -1,0 +1,14 @@
+---
+# Primary playbook for managing the common components of jetport
+
+# add MongoDB
+- include: mongodb.yml
+
+# add RabbitMQ
+- include: rabbitmq.yml
+
+# add Nginx
+- include: nginx.yml
+
+# add Packages
+- include: packages.yml

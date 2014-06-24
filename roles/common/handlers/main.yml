@@ -1,0 +1,11 @@
+---
+# Handler for RabbitMQ
+
+- name: restart rabbitmq
+  service: name=rabbitmq-server state=restarted
+
+# Handler for Nginx
+
+- name: restart nginx
+  service: name=nginx state=restarted
+

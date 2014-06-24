@@ -1,0 +1,8 @@
+---
+# Install dependicies external to jetport project
+
+- name: install virtualenv
+  pip: name=virtualenv state=present
+
+- name: install tox
+  pip: name=tox state=present

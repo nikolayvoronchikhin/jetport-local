@@ -1,0 +1,7 @@
+---
+# file: site.yml
+- hosts: admin
+  roles:
+    - common
+    - jetport
+    - jetport-ui

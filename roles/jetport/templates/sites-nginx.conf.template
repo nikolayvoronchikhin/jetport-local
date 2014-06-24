@@ -1,0 +1,35 @@
+server {
+    listen       80;
+    server_name  localhost;
+
+    root /var/www/html/;
+    index index.html index.htm;
+
+    location /docs {
+        root   /var/www/html/;
+        index  index.html index.htm;
+    }
+
+    location /jetport-ui {
+        root   /var/www/html/;
+        index  index.html index.htm;
+    }
+
+    # proxy configuration for jetport uwsgi
+    location /api {
+        include uwsgi_params;
+        uwsgi_param SCRIPT_NAME /api;
+        uwsgi_modifier1 30;
+        uwsgi_pass unix:///tmp/uwsgi-jetport.sock;
+    }
+
+    # proxy configuration for jetport sim uwsgi
+    location /sim {
+        include uwsgi_params;
+        uwsgi_param SCRIPT_NAME /sim;
+        uwsgi_modifier1 30;
+        uwsgi_pass unix:///tmp/uwsgi-jetport-sim.sock;
+    }   
+
+}
+

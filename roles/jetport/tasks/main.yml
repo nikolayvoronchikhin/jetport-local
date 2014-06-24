@@ -1,0 +1,8 @@
+---
+# Playbook for Jetport backend
+
+- include: external-dep.yml
+
+
+# Finally; enable restful services
+- include: enable-rest.yml
