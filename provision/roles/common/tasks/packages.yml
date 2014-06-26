@@ -7,4 +7,11 @@
     - gcc
     - python-dev
     - git
+    - python-pip
+
+- name: install external python packages
+  pip: name={{ item }} state=present
+  with_items:
+    - virtualenv
+    - ansible
 

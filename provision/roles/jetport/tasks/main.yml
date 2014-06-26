@@ -4,9 +4,6 @@
 # create project user and associated files
 - include: user.yml
 
-# install external dependencies for the project
-- include: external-dep.yml
-
 # initialize the project
 - include: project-init.yml
 

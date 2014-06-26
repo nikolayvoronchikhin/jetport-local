@@ -1,6 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'etc'
+
+USER_NAME = Etc.getlogin
+DEV_MODE = ENV['DEV_VM']
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -18,6 +23,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # a name for the guest instance
   config.vm.hostname = "local-dev"
 
+  unless DEV_MODE.nil? || DEV_MODE == 0
+    puts "Running in DEV MODE; user #{ USER_NAME }"
+    config.ssh.username = USER_NAME
+    config.ssh.private_key_path = "~/.ssh/id_rsa"
+    config.ssh.forward_agent = true
+  end
+
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
@@ -25,12 +37,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
   # rabbitmq management
   config.vm.network "forwarded_port", guest: 15672, host: 8672
+  # mongodb HTTP console
+  config.vm.network "forwarded_port", guest: 28017, host: 8017
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "jetport/", "/opt/stack/jetport"
+  unless DEV_MODE.nil? || DEV_MODE == 0
+    config.vm.synced_folder "../../cloud/jetport/", "/home/#{ USER_NAME }/jetport", owner: "jetport", group: "jetport", create: true
+  end
 
   config.vm.provider "virtualbox" do |vb|
     # provide a name for the vm
