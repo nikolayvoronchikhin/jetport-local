@@ -7,12 +7,12 @@ Create development VM using vagrant and install required software using ansible 
 
 Install Virtualbox:
 
-        [Virtualbox Download](https://www.virtualbox.org/wiki/Downloads)
+        https://www.virtualbox.org/wiki/Downloads
 
 
 Install Vagrant:
 
-        [Vagrant Download](http://www.vagrantup.com/downloads.html)
+        http://www.vagrantup.com/downloads.html
 
 
 Clone jetport-local:
@@ -20,11 +20,11 @@ Clone jetport-local:
         git clone git@github.com:kenjones-cisco/jetport-local.git
 
 
-Copy private/public SSH keys:
+Copy private/public SSH keys [*How to create SSH keys*](https://help.github.com/articles/generating-ssh-keys):
 
         cp ~/.ssh/id_rsa* provision/roles/jetport/files/
 
-[*How to create SSH keys*](https://help.github.com/articles/generating-ssh-keys)
+
 
 
 Run Vagrant:
