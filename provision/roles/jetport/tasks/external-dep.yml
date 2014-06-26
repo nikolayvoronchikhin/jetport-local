@@ -1,8 +1,6 @@
 ---
 # Install dependicies external to jetport project
 
-- name: install virtualenv
-  pip: name=virtualenv state=present
-
-- name: install tox
-  pip: name=tox state=present
+- name: install external python packages
+  pip: name={{ item }} state=present
+  with_items: python_packages

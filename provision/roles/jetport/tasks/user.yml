@@ -1,0 +1,21 @@
+---
+# create project user and associated components
+
+- name: Create user
+  user: home="/home/{{ project_name }}" name={{ project_name }} password={{ user_password }} groups=admin append=yes state=present
+
+- name: Setup git config
+  copy: src=gitconfig-default dest="/home/{{ project_name }}/.gitconfig" group={{ project_name }} owner={{ project_name }}
+
+- name: make .ssh directory
+  file: path="/home/{{ project_name }}/.ssh" group={{ project_name }} owner={{ project_name }} state=directory
+
+- name: Add SSH private key (if available)
+  copy: src=id_rsa dest="/home/{{ project_name }}/.ssh/id_rsa" group={{ project_name }} owner={{ project_name }} mode=600
+  
+- name: Add SSH pub key (if available)
+  copy: src=id_rsa.pub dest="/home/{{ project_name }}/.ssh/id_rsa.pub" group={{ project_name }} owner={{ project_name }}
+
+- name: set variable if non-empty SSH pub key was added
+  shell: test -s "/home/{{ project_name }}/.ssh/id_rsa" ; echo $?
+  register: ssh_pub_key_found

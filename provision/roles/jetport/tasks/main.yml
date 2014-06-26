@@ -1,8 +1,14 @@
 ---
 # Playbook for Jetport backend
 
+# create project user and associated files
+- include: user.yml
+
+# install external dependencies for the project
 - include: external-dep.yml
 
+# initialize the project
+- include: project-init.yml
 
-# Finally; enable restful services
+# configure restful services for project
 - include: enable-rest.yml

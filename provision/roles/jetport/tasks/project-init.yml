@@ -1,0 +1,33 @@
+---
+# Initialize Jetport environment
+
+- name: create/verify project root directory
+  file: owner={{ project_name }} group={{ project_name }} mode=755 path={{ project_root }} state=directory
+
+- name: create/verify project source directory
+  file: path="{{ project_root }}/{{ project_name }}" state=directory
+  
+- name: pull source from repo
+  sudo: yes
+  sudo_user: "{{ project_name }}"
+  git: repo={{ project_repo }} dest="{{ project_root }}/{{ project_name }}" accept_hostkey=yes
+  when: ssh_pub_key_found.rc == 0
+
+- name: install tox and pbr
+  pip: name={{ item }} state=present virtualenv={{ project_root }} virtualenv_command=virtualenv-2.7 extra_args='-U'
+  with_items:
+    - pbr
+    - tox
+
+- name: install project defined requirements
+  pip: state=present requirements="{{ project_root }}/{{ project_name }}/requirements.txt" virtualenv={{ project_root }} virtualenv_command=virtualenv-2.7 extra_args='-U'
+  when: ssh_pub_key_found.rc == 0
+  
+- name: set owner and group of virtualenv directories
+  file: owner={{ project_name }} group={{ project_name }} mode=755 recurse=yes path="{{ project_root }}/{{ item }}" state=directory
+  with_items:
+    - bin
+    - include
+    - lib
+    - local
+  when: ssh_pub_key_found.rc == 0

@@ -1,0 +1,10 @@
+---
+# variables for jetport project
+
+project_name: jetport
+project_root: /opt/stack
+project_repo: git@vm-lab9-repo-01.cisco.com:cloud-coaltion/jetport.git
+# password is jetport.123
+user_password: $6$rounds=100000$t87Lw/Mh7vi8IuQ7$fcW8yKxOTU6HM0UdFgxQskI/YKHO/a4sDyBn8Bhh/7e6CYq8jOYsmwHTQI05dPmm5SwBdK8UhhrcU4VlG3Ds1.
+python_packages:
+  - virtualenv

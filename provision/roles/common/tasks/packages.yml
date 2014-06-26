@@ -7,9 +7,4 @@
     - gcc
     - python-dev
     - git
-    
-- name: install pip
-  easy_install: name=pip
-  
-- name: install ansible
-  pip: name=ansible state=present
+
