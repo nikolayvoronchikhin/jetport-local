@@ -20,7 +20,7 @@ Clone jetport-local:
         git clone git@github.com:kenjones-cisco/jetport-local.git
 
 
-Copy private/public SSH keys [*How to create SSH keys*](https://help.github.com/articles/generating-ssh-keys):
+Copy private/public SSH keys [*(How to create SSH keys)*](https://help.github.com/articles/generating-ssh-keys):
 
         cp ~/.ssh/id_rsa* provision/roles/jetport/files/
 
