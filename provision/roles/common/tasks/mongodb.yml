@@ -6,10 +6,10 @@
 
 - name: add mongodb offical apt repository
   apt_repository: repo='deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' state=present
-  
+
 - name: install mongodb
   apt: pkg=mongodb-org state=installed force=yes
 
-- name: start mongodb
-  service: name=mongod state=started
-
+- name: configure mongodb process mongod
+  copy: src=mongod.conf dest=/etc/mongod.conf
+  notify: restart mongod

@@ -4,6 +4,11 @@
 - name: restart rabbitmq
   service: name=rabbitmq-server state=restarted
 
+# Handler for MongoDB
+
+- name: restart mongod
+  service: name=mongod state=restarted
+
 # Handler for Nginx
 
 - name: restart nginx
