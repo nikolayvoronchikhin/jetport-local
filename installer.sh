@@ -10,5 +10,5 @@ mkdir -p /etc/ansible
 # then set to read-only to avoid being executed
 cp provision/initial_hosts /etc/ansible/hosts
 chmod 644 /etc/ansible/hosts
-ansible-playbook ${1}
+ansible-playbook ${1} --extra-vars "dev_user=${2}"
 

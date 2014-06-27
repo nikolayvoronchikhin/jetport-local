@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provision using shell to execute ansible because of windows issues
   config.vm.provision "shell" do |sh|
     sh.path = "installer.sh"
-    sh.args = ["provision/site.yml"]
+    sh.args = ["provision/site.yml", USER_NAME]
   end
 
   # a name for the guest instance
@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   unless DEV_MODE.nil? || DEV_MODE == 0
-    config.vm.synced_folder "../../cloud/jetport/", "/home/#{ USER_NAME }/jetport", owner: "jetport", group: "jetport", create: true
+    config.vm.synced_folder "../../cloud/jetport/", "/home/#{ USER_NAME }/projects/cloud/jetport", owner: USER_NAME, group: USER_NAME, create: true
   end
 
   config.vm.provider "virtualbox" do |vb|

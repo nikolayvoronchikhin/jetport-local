@@ -1,0 +1,12 @@
+---
+# variables for developer role
+
+# just a default if the user name not found by vagrant
+dev_user: dev_test
+# default password to jetport.123
+dev_pass: $6$rounds=100000$vC130GsMCl/Df7rY$7DpB8if5NySnn/lSn9M9ygfJ.fIs.29OlNwWbtIx3/ebIzpQGAbWFO0MLbAOuP.da2cjwx7G829h2g.TBb.sH/
+dev_home: "/home/{{ dev_user }}"
+
+project_repo: git@vm-lab9-repo-01.cisco.com:cloud-coaltion/jetport.git
+project_root: "{{ dev_home }}/projects/cloud"
+project_name: jetport

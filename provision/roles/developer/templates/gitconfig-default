@@ -14,3 +14,7 @@
   changed = green
   untracked = cyan
 
+
+[user]
+	name = {{ dev_user }}
+	email = {{ dev_user }}@cisco.com

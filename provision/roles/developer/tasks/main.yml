@@ -1,0 +1,35 @@
+---
+# create developer home and configure accordingly
+
+- name: Create user
+  user: home="{{ dev_home }}" name={{ dev_user }} password={{ dev_pass }} groups=admin append=yes state=present
+
+- name: Setup git config
+  template: src=gitconfig-default.j2 dest="{{ dev_home }}/.gitconfig"
+
+- name: Update git config file attributes
+  file: path="{{ dev_home }}/.gitconfig" group={{ dev_user }} owner={{ dev_user }}
+
+- name: make projects directory
+  file: path="{{ project_root }}" group={{ dev_user }} owner={{ dev_user }} state=directory
+
+- name: make .ssh directory
+  file: path="{{ dev_home }}/.ssh" group={{ dev_user }} owner={{ dev_user }} state=directory
+
+- name: Add SSH private key (if available)
+  copy: src=id_rsa dest="{{ dev_home }}/.ssh/id_rsa" group={{ dev_user }} owner={{ dev_user }} mode=600
+
+- name: Add SSH pub key (if available)
+  copy: src=id_rsa.pub dest="{{ dev_home }}/.ssh/id_rsa.pub" group={{ dev_user }} owner={{ dev_user }}
+
+- name: set variable if non-empty SSH pub key was added
+  shell: test -s "{{ dev_home }}/.ssh/id_rsa"
+  register: result
+  ignore_errors: True
+
+- name: debug result
+  debug: var=result
+
+- name: initialize project if ssh key found
+  include: project-init.yml
+  when: result|success
