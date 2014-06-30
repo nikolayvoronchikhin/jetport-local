@@ -1,28 +1,41 @@
 ---
 # create developer home and configure accordingly
 
+- name: debugging dev user
+  debug: var=dev_user
+
+- name: debugging dev mode
+  debug: var=dev_mode
+
 - name: Create user
-  user: home="{{ dev_home }}" name={{ dev_user }} password={{ dev_pass }} groups=admin append=yes state=present
+  user: home="{{ dev_home }}" name={{ dev_user }} password={{ dev_pass }} groups=admin,vboxsf append=yes state=present
+  when: dev_user != "dev_test"
 
 - name: Setup git config
   template: src=gitconfig-default.j2 dest="{{ dev_home }}/.gitconfig"
+  when: dev_user != "dev_test"
 
 - name: Update git config file attributes
   file: path="{{ dev_home }}/.gitconfig" group={{ dev_user }} owner={{ dev_user }}
+  when: dev_user != "dev_test"
 
 - name: make projects directory
   file: path="{{ project_root }}" group={{ dev_user }} owner={{ dev_user }} state=directory
+  when: dev_user != "dev_test"
 
 - name: make .ssh directory
   file: path="{{ dev_home }}/.ssh" group={{ dev_user }} owner={{ dev_user }} state=directory
+  when: dev_user != "dev_test"
 
 - name: Add SSH private key (if available)
   copy: src=id_rsa dest="{{ dev_home }}/.ssh/id_rsa" group={{ dev_user }} owner={{ dev_user }} mode=600
+  when: dev_user != "dev_test"
 
 - name: Add SSH pub key (if available)
   copy: src=id_rsa.pub dest="{{ dev_home }}/.ssh/id_rsa.pub" group={{ dev_user }} owner={{ dev_user }}
+  when: dev_user != "dev_test"
 
-- name: set variable if non-empty SSH pub key was added
+- name: set variable if non-empty SSH key was added
   shell: test -s "{{ dev_home }}/.ssh/id_rsa"
   register: result
   ignore_errors: True

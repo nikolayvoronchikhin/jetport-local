@@ -4,22 +4,25 @@
 - name: make virtualenv directory
   file: path="{{ project_virt }}" group={{ dev_user }} owner={{ dev_user }} state=directory
 
-- name: pull source from repo
-  sudo: yes
-  sudo_user: "{{ dev_user }}"
-  git: repo={{ project_repo }} dest="{{ project_virt }}/{{ project_name }}" accept_hostkey=yes
-
 - name: install tox and pbr
   pip: name={{ item }} state=present virtualenv={{ project_virt }} virtualenv_command=virtualenv-2.7 extra_args='-U'
   with_items:
     - pbr
     - tox
 
+- name: pull source from repo
+  sudo: yes
+  sudo_user: "{{ dev_user }}"
+  git: repo={{ project_repo }} dest="{{ project_virt }}/{{ project_name }}" accept_hostkey=yes
+  when: dev_mode == "1"
+
 - name: install project defined requirements
   pip: state=present requirements="{{ project_virt }}/{{ project_name }}/requirements.txt" virtualenv={{ project_virt }} virtualenv_command=virtualenv-2.7 extra_args='-U'
+  when: dev_mode == "1"
 
 - name: install jetport
   pip: state=present virtualenv={{ project_virt }} virtualenv_command=virtualenv-2.7 name="{{ project_virt }}/{{ project_name }}"  extra_args='-e'
+  when: dev_mode == "1"
 
 - name: set owner and group of virtualenv directories
   file: owner={{ dev_user }} group={{ dev_user }} mode=755 recurse=yes path="{{ project_virt }}/{{ item }}" state=directory
