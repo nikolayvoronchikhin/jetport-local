@@ -17,3 +17,6 @@
   
 - name: start nginx
   service: name=nginx state=started
+
+- name: setup directory structure
+  file: owner="www-data" group="www-data" mode=755 recurse=yes path=/var/www/html state=directory

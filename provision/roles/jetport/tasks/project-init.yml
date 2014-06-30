@@ -41,3 +41,6 @@
 
 - name: create symlink in root level /etc directory
   file: src="{{ project_root }}/etc/{{ project_name }}" dest="/etc/{{ project_name }}" state=link
+
+- name: make web documentation directories
+  file: owner="www-data" group="www-data" mode=755 recurse=yes path=/var/www/html/docs/cover state=directory
