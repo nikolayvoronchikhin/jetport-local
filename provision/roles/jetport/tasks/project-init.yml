@@ -21,6 +21,9 @@
 - name: install project defined requirements
   pip: state=present requirements="{{ project_root }}/{{ project_name }}/requirements.txt" virtualenv={{ project_root }} virtualenv_command=virtualenv-2.7 extra_args='-U'
 
+- name: install project defined test requirements
+  pip: state=present requirements="{{ project_root }}/{{ project_name }}/test-requirements.txt" virtualenv={{ project_root }} virtualenv_command=virtualenv-2.7 extra_args='-U'
+
 - name: install jetport
   pip: state=present virtualenv={{ project_root }} virtualenv_command=virtualenv-2.7 name="{{ project_root }}/{{ project_name }}"
 
@@ -44,3 +47,6 @@
 
 - name: make web documentation directories
   file: owner="www-data" group="www-data" mode=755 recurse=yes path=/var/www/html/docs/cover state=directory
+
+- name: deploy docs
+  script: deploy_docs.sh "{{ project_root }}" "{{ project_name }}"
