@@ -1,0 +1,7 @@
+---
+# variables for jetport project
+
+project_user: jetport
+project_name: jetport-ui
+project_root: /opt/stack
+project_repo: git@vm-lab9-repo-01.cisco.com:cloud-coaltion/jetport-ui.git

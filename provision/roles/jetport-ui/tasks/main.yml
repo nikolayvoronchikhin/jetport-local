@@ -1,3 +1,26 @@
 ---
 # Playbook for Jetport-UI
 
+- name: create/verify project root directory
+  file: owner={{ project_user }} group={{ project_user }} mode=755 path={{ project_root }} state=directory
+
+- name: create/verify project source directory
+  file: owner={{ project_user }} group={{ project_user }} mode=755 path="{{ project_root }}/{{ project_name }}" state=directory
+
+- name: pull source from repo
+  sudo: yes
+  sudo_user: "{{ project_user }}"
+  git: repo={{ project_repo }} dest="{{ project_root }}/{{ project_name }}" accept_hostkey=yes
+
+- name: make web documentation directories
+  file: owner="www-data" group="www-data" mode=755 recurse=yes path=/var/www/html/{{ project_name }} state=directory
+
+- name: deploy jetport-ui
+  copy: owner="{{ project_user }}" group="{{ project_user }}" mode=755 src="{{ project_root }}/{{ project_name }}/WebContent/index.html" dest="/var/www/html/{{ project_name }}/index.html"
+
+- name: sync jetport-ui
+  synchronize: owner=yes group=yes src="{{ project_root }}/{{ project_name }}/WebContent/{{ item }}" dest="/var/www/html/{{ project_name }}"
+  with_items:
+    - css
+    - image
+    - js
