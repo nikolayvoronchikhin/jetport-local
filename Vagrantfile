@@ -48,6 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   unless DEV_MODE.nil? || DEV_MODE == "0"
     config.vm.synced_folder "../../cloud/jetport/", "/home/#{ USER_NAME }/projects/cloud/jetport", owner: USER_NAME, group: USER_NAME, create: true
+    config.vm.synced_folder "../../cloud/jetport-ui/", "/home/#{ USER_NAME }/projects/cloud/jetport-ui", owner: USER_NAME, group: USER_NAME, create: true
   end
 
   config.vm.provider "virtualbox" do |vb|

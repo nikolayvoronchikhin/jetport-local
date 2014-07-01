@@ -13,3 +13,8 @@ project_root: "{{ dev_home }}/projects"
 project_repo: git@vm-lab9-repo-01.cisco.com:cloud-coaltion/jetport.git
 project_name: jetport
 project_virt: "{{ project_root }}/cloud"
+
+# specific to projects ui
+project_ui_repo: git@vm-lab9-repo-01.cisco.com:cloud-coaltion/jetport-ui.git
+project_ui_name: jetport-ui
+
