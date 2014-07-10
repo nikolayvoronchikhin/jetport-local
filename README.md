@@ -78,12 +78,12 @@ Reload VM:
 
 There should now be a directory two levels up from jetport-local
 with the name `../../cloud/jetport`. It is a shared directory with
-the VM. The corresponding location on your VM is
+the VM, and the corresponding location on your VM is
 `/home/USER/projects/cloud/jetport`.
 
-*(This is only possible because `DEV_MODE` is set to 1. Make
-sure to keep your `DEV_MODE` to 1 from here on out. Otherwise, the
-shared folder functionality will not remain.)*
+*(This is only possible because `DEV_MODE` is set to 1. Make sure to
+always set `DEV_MODE` to 1. Otherwise, the shared folder functionality
+will not remain)*
 
 You can `su USER` and password defaults to `jetport.123`. From there
 you can run tox or other commands against the project. And all changes
