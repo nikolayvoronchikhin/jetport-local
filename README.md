@@ -34,7 +34,7 @@ Change to user `jetport`:
 
 ```bash
         su jetport
-        password: *jetport.123*
+        # password: *jetport.123*
 ```
 
 Verify environment:
@@ -76,6 +76,7 @@ Reload VM:
 
 Now there will exist a directory two levels up from jetport-local named `../../cloud/jetport` that
 is a shared directory with the VM. The corresponding location on your VM is `/home/USER/projects/cloud/jetport`.
+
 You can `su USER` and password defaults to `jetport.123`. From there you can run
 tox or other commands against the project. And all changes from inside the VM or on host
 machine will be reflected in both directions.
