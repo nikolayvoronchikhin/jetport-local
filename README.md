@@ -1,7 +1,7 @@
 # jetport-local
 
-Create development VM using vagrant and install required software using ansible to initialize complete development environment.
-
+Create development VM using Vagrant and install required software using
+Ansible to initialize complete development environment.
 
 ## Installation
 
@@ -76,16 +76,21 @@ Reload VM:
         vagrant reload --provision
 ```
 
-Now there will exist a directory two levels up from jetport-local
-with the following name: `../../cloud/jetport`
+There should now be a directory two levels up from jetport-local
+with the name `../../cloud/jetport`. It is a shared directory with
+the VM. The corresponding location on your VM is
+`/home/USER/projects/cloud/jetport`.
 
-It is a shared directory with the VM. This is the corresponding location on your VM: `/home/USER/projects/cloud/jetport`.
+*(This is only possible because `DEV_MODE` is set to 1. Make
+sure to keep your `DEV_MODE` to 1 from here on out. Otherwise, the
+shared folder functionality will not remain.)*
 
-You can `su USER` and password defaults to `jetport.123`. From there you can run
-tox or other commands against the project. And all changes from inside the VM or on host
-machine will be reflected in both directions.
+You can `su USER` and password defaults to `jetport.123`. From there
+you can run tox or other commands against the project. And all changes
+from inside the VM or on host machine will be reflected in both directions.
 
-Observe your local machine. The `jetport` directory within the clone of jetport-local
-initially had nothing inside; it should now have the entire jetport backend project.
+Observe your local machine. The `jetport` directory within
+the clone of jetport-local initially had nothing inside; it should now
+have the entire Jetport backend project.
 
 Congratulations!
