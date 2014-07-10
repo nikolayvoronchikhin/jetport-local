@@ -7,44 +7,48 @@ Create development VM using vagrant and install required software using ansible 
 
 Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads):
 
-        https://www.virtualbox.org/wiki/Downloads
-
 
 Install [Vagrant](http://www.vagrantup.com/downloads.html):
-
-        http://www.vagrantup.com/downloads.html
 
 
 Clone [jetport-local](https://github.com/kenjones-cisco/jetport-local):
 
+```bash
         git clone git@github.com:kenjones-cisco/jetport-local.git
-
+```
 
 Run Vagrant:
 
+```bash
         vagrant up
-
+```
 
 Login to VM:
 
+```bash
         ssh vagrant@localhost:2222
+```
 
 password: *vagrant*
 
 
 Change to user `jetport`:
 
+```bash
         su jetport
+```
 
 password: *jetport.123*
 
 
 Verify environment:
 
+```bash
         cd /opt/stack
         source bin/activate
         cd jetport
         tox
+```
 
 ## For Developers:
 
@@ -52,22 +56,27 @@ Verify environment:
 
 Copy private/public SSH keys [*(How to create SSH keys)*](https://help.github.com/articles/generating-ssh-keys):
 
+```bash
         cp ~/.ssh/id_rsa* provision/roles/developer/files/
-
+```
 
 Set environment variable `DEV_MODE` to 1:
 
+```bat
         Windows
         set DEV_MODE=1
+```
 
+```bash
         Linux
         DEV_MODE=1
-
+```
 
 Reload VM:
 
+```bash
         vagrant reload --provision
-
+```
 
 Now there will exist a directory two levels up from jetport-local named `../../cloud/jetport` that is a shared directory with
 the VM. The corresponding location on your VM is `/home/USER/projects/cloud/jetport`. You can `su USER` and password defaults to `jetport.123`.
