@@ -48,7 +48,7 @@ Verify environment:
         tox
 ```
 
-### For Developers:
+### For Developers
 
 **Do the following after completing steps above**
 
@@ -58,7 +58,7 @@ Copy private/public SSH keys [*(How to create SSH keys)*](https://help.github.co
         cp ~/.ssh/id_rsa* provision/roles/developer/files/
 ```
 
-Set environment variable `DEV_MODE` to 1:
+Set the environment variable `DEV_MODE` of your local OS to 1 or '1':
 
 ```bat
         REM works for Windows
