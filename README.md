@@ -3,7 +3,7 @@
 Create development VM using vagrant and install required software using ansible to initialize complete development environment.
 
 
-## How to use
+## Installation
 
 Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
@@ -18,6 +18,7 @@ Clone [jetport-local](https://github.com/kenjones-cisco/jetport-local):
 Run Vagrant:
 
 ```bash
+        # takes about 15 minutes
         vagrant up
 ```
 
@@ -29,6 +30,7 @@ Login to VM:
         # password: *vagrant*
 ```
 
+### Verification
 
 Change to user `jetport`:
 
@@ -46,7 +48,7 @@ Verify environment:
         tox
 ```
 
-## For Developers:
+### For Developers:
 
 **Do the following after completing steps above**
 
@@ -74,14 +76,16 @@ Reload VM:
         vagrant reload --provision
 ```
 
-Now there will exist a directory two levels up from jetport-local named `../../cloud/jetport` that
-is a shared directory with the VM. The corresponding location on your VM is `/home/USER/projects/cloud/jetport`.
+Now there will exist a directory two levels up from jetport-local
+with the following name: `../../cloud/jetport`
+
+It is a shared directory with the VM. This is the corresponding location on your VM: `/home/USER/projects/cloud/jetport`.
 
 You can `su USER` and password defaults to `jetport.123`. From there you can run
 tox or other commands against the project. And all changes from inside the VM or on host
 machine will be reflected in both directions.
 
-Back on your local machine if you look into what was an empty `jetport` directory within clone of jetport-local
-should now have the entire jetport backend project.
+Observe your local machine. The `jetport` directory within the clone of jetport-local
+initially had nothing inside; it should now have the entire jetport backend project.
 
 Congratulations!
