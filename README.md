@@ -15,9 +15,11 @@ Clone [jetport-local](https://github.com/kenjones-cisco/jetport-local):
     git clone git@github.com:kenjones-cisco/jetport-local.git
 ```
 
-Run Vagrant:
+Get into the cloned directory and run Vagrant:
 
 ```bash
+    cd jetport-local
+
     # takes about 15 minutes
     vagrant up
 ```
