@@ -12,22 +12,35 @@ Install [Vagrant](http://www.vagrantup.com/downloads.html)
 Clone [jetport-local](https://github.com/kenjones-cisco/jetport-local):
 
 ```bash
-        git clone git@github.com:kenjones-cisco/jetport-local.git
+    git clone git@github.com:kenjones-cisco/jetport-local.git
 ```
 
 Run Vagrant:
 
 ```bash
-        # takes about 15 minutes
-        vagrant up
+    # takes about 15 minutes
+    vagrant up
 ```
 
 Login to VM:
 
 ```bash
-        vagrant ssh
-        # ssh vagrant@localhost:2222
-        # password: *vagrant*
+    vagrant ssh
+    # ssh localhost -p 2222 -l vagrant
+    # password: *vagrant*
+```
+
+```bash
+    # just execute once on local
+    cat << EOF > ~/.ssh/config
+    HOST jetport
+        Hostname localhost
+        Port 2222
+        User vagrant
+    EOF
+
+    # easy from now on
+    ssh jetport
 ```
 
 ### Verification
@@ -35,17 +48,17 @@ Login to VM:
 Change to user `jetport`:
 
 ```bash
-        su jetport
-        # password: *jetport.123*
+    su jetport
+    # password: *jetport.123*
 ```
 
 Verify environment:
 
 ```bash
-        cd /opt/stack
-        source bin/activate
-        cd jetport
-        tox
+    cd /opt/stack
+    source bin/activate
+    cd jetport
+    tox
 ```
 
 ### For Developers
@@ -55,25 +68,25 @@ Verify environment:
 Copy private/public SSH keys [*(How to create SSH keys)*](https://help.github.com/articles/generating-ssh-keys):
 
 ```bash
-        cp ~/.ssh/id_rsa* provision/roles/developer/files/
+    cp ~/.ssh/id_rsa* provision/roles/developer/files/
 ```
 
 Set the environment variable `DEV_MODE` of your local OS to 1 or '1':
 
 ```bat
-        REM works for Windows
-        set DEV_MODE=1
+    REM works for Windows
+    set DEV_MODE=1
 ```
 
 ```bash
-        # works for Linux and Mac
-        DEV_MODE=1
+    # works for Linux and Mac
+    DEV_MODE=1
 ```
 
 Reload VM:
 
 ```bash
-        vagrant reload --provision
+    vagrant reload --provision
 ```
 
 There should now be a directory two levels up from jetport-local
