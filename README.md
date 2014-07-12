@@ -26,7 +26,7 @@ Login to VM:
 
 ```bash
     vagrant ssh
-    # ssh localhost -p 2222 -l vagrant
+    # ssh vagrant@localhost -p 2222
     # password: *vagrant*
 ```
 
