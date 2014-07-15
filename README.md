@@ -100,9 +100,14 @@ the VM, and the corresponding location on your VM is
 always set `DEV_MODE` to 1. Otherwise, the shared folder functionality
 will not remain)*
 
-You can `su USER` and password defaults to `jetport.123`. From there
-you can run tox or other commands against the project. And all changes
-from inside the VM or on host machine will be reflected in both directions.
+From there you can run tox or other commands against the project. And all changes
+from inside the VM or on host machine will be reflected in both directions. To execute
+these commands, you do not want to be user `vagrant`. There are a couple users to choose
+from:
+
+- `USER` and password defaults to `jetport.123`
+- `jetport` and password defaults to `jetport.123`
+- `root` and password defaults to `vagrant`
 
 Observe your local machine. The `jetport` directory within
 the clone of jetport-local initially had nothing inside; it should now
