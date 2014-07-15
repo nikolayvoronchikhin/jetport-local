@@ -11,6 +11,7 @@ if TMP_VAL == 1 || TMP_VAL == "1"
     puts "DEV_MODE enabled"
     DEV_MODE = "1"
 else
+    puts "DEV_MODE disabled"
     DEV_MODE = "0"
 end
 
