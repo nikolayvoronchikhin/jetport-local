@@ -82,7 +82,7 @@ Set the environment variable `DEV_MODE` of your local OS to 1 or '1':
 
 ```bash
     # works for Linux and Mac
-    DEV_MODE=1
+    export DEV_MODE=1
 ```
 
 Reload VM:
