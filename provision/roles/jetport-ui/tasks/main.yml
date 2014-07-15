@@ -21,6 +21,4 @@
 - name: sync jetport-ui
   synchronize: owner=yes group=yes src="{{ project_root }}/{{ project_name }}/WebContent/{{ item }}" dest="/var/www/html/{{ project_name }}"
   with_items:
-    - css
-    - image
-    - js
+    - assets
