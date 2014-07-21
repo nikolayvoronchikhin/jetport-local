@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="favicon.ico">
+        <title>Welcome to Jetport!</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="css/jumbotron-narrow.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Cloud Coalition</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Cisco Cloud Coalition is a catalyst for the
+                        communication and collaboration between stakeholders
+                        that are active within Cisco in different aspects of cloud, with the purpose of creating an
+                        integrated end-to-end vision for cloud application architectures and the deployment of those.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="location.href='http://iwe.cisco.com/web/cloud-coalition/'">IWE Page</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li><a data-toggle="modal" data-target="#myModal">About Us</a></li>
+                </ul>
+                <h3 class="text-muted">Jetport</h3>
+            </div>
+            <div class="jumbotron">
+                <h1>What is it?</h1>
+                <p class="lead">Jetport is the connection between Applications/Services with IaaS and PaaS</p>
+                <p><a class="btn btn-lg btn-success" href="https://github.com/kenjones-cisco/jetport-local" role="button">Deploy today</a></p>
+            </div>
+            <div class="row marketing">
+                <div class="col-lg-6">
+                    <h4>Documentation</h4>
+                    <p><a href="docs/">Click here</a>
+                        for looking through documentation
+                        of solution design and code
+                    </p>
+                    <h4>Code Coverage</h4>
+                    <p><a href="docs/cover/">Click here</a>
+                        for checking how well our
+                        test code has covered the backend code
+                    </p>
+                    <h4>REST API</h4>
+                    <p><a href="api/v1">Click here</a>
+                        for evaluating our various
+                        RESTful web service endpoints
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <h4>MongoDB</h4>
+                    <p><a href="http://jetport-dev.cisco.com:28017/">Click here</a>
+                        for verifying that our database
+                        load remains healthy and stable
+                    </p>
+                    <h4>Jenkins CI</h4>
+                    <p><a href="http://jetport-dev.cisco.com:9080/">Click here</a>
+                        for evaluating our project health and extending
+                        our Continuous Integration server
+                    </p>
+                    <h4>Jetport UI</h4>
+                    <p><a href="jetport-ui/?appname=ciscochef">Click here</a>
+                        for visualizing an application
+                        that is simulated from the
+                        backend
+                    </p>
+                </div>
+            </div>
+            <div class="footer">
+                <p>&copy; Cisco 2013</p>
+            </div>
+        </div>
+        <!-- /container -->
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    </body>
+</html>
